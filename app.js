@@ -57,7 +57,7 @@ taskInput.addEventListener("keypress", function (event) {
   if (event.key === "Enter" && taskInput.value !== "") {
     console.log("Task Added!!");
     // prevent page refresh on form submission
-    event.preventDefault();
+    //event.preventDefault();
     // push new object to task array
     Tasks.push(toDo);
     // Make input field empty
