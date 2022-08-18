@@ -27,22 +27,6 @@ if (tasksDb) {
   render();
 }
 
-// Create function to fetch and remove finished task from Array
-function reply_click(clicked_id) {
-  alert("Confirm");
-  let idValue = parseInt(clicked_id); // id fetched from DOM is a string so convert to number
-  Tasks = tasksDb;
-  // Find index of the clicked id in Array
-  let index = Tasks.map(function (x) {
-    return x.id;
-  }).indexOf(idValue);
-  // Remove found index from Array
-  Tasks.splice(index, 1);
-  // Update updated Array back to localStorage
-  localStorage.setItem("Tasks", JSON.stringify(Tasks));
-  render(); // Render Updated Array
-}
-
 // Create function to fetch tasks from input
 taskInput.addEventListener("keypress", function (event) {
   // This  will create a new todo object based on the
@@ -67,3 +51,19 @@ taskInput.addEventListener("keypress", function (event) {
     render(); // render tasks on DOM
   }
 });
+
+// Create function to fetch and remove finished task from Array
+function reply_click(clicked_id) {
+  alert("Confirm");
+  let idValue = parseInt(clicked_id); // id fetched from DOM is a string so convert to number
+  //Tasks = tasksDb;
+  // Find index of the clicked id in Array
+  let index = Tasks.map(function (x) {
+    return x.id;
+  }).indexOf(idValue);
+  // Remove found index from Array
+  Tasks.splice(index, 1);
+  // Update updated Array back to localStorage
+  localStorage.setItem("Tasks", JSON.stringify(Tasks));
+  render(); // Render Updated Array
+}
