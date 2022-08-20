@@ -2,6 +2,7 @@ let Tasks = []; //Create array to store todos
 const taskInput = document.getElementById("task_el"); // Bla Bla Bla it's self explanatory
 const taskList = document.getElementById("ul_el"); // Bla Bla Bla it's self explanatory
 let tasksDb = JSON.parse(localStorage.getItem("Tasks")); // Fetch Tasks array from localStorage
+let submitToDo = document.getElementById("submit_btn");
 
 // Create function to render Tasks on page
 function render() {
@@ -39,6 +40,30 @@ taskInput.addEventListener("keypress", function (event) {
     id: Date.now(),
   };
   if (event.key === "Enter" && taskInput.value !== "") {
+    console.log("Task Added!!");
+    // prevent page refresh on form submission
+    //event.preventDefault();
+    // push new object to task array
+    Tasks.push(toDo);
+    // Make input field empty
+    taskInput.value = "";
+    // Update localStorage with tasks array
+    localStorage.setItem("Tasks", JSON.stringify(Tasks));
+    render(); // render tasks on DOM
+  }
+});
+
+submitToDo.addEventListener("click", function () {
+  // This  will create a new todo object based on the
+  // text that was entered in the text input, and push it into
+  // the `todoItems` array
+  let task = taskInput.value;
+  let toDo = {
+    task,
+    checked: false,
+    id: Date.now(),
+  };
+  if (taskInput.value !== "") {
     console.log("Task Added!!");
     // prevent page refresh on form submission
     //event.preventDefault();
